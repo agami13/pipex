@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 16:09:07 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/21 22:49:02 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/04/23 02:30:12 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*get_path(char **envp, char *cmd)
 		join = ft_strjoin(paths[i], "/");
 		path = ft_strjoin(join, cmd);
 		free(join);
-		if (access(path, F_OK) == 0)
+		if (access(path, F_OK || X_OK) == 0)
 		{
 			ft_free(paths);
 			return (path);
