@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:50:05 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/05/15 17:27:22 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/05/15 19:58:27 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ t_pipe	*parse(char **argv, char **envp)
 	}
 	return (op);
 }
-	

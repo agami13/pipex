@@ -6,13 +6,13 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 11:50:09 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/05/15 17:30:28 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/05/15 19:58:13 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_error()
+void	ft_error(void)
 {
 	write(2, "Error!\n", ft_strlen("Error!\n"));
 	ft_printf("usage : ./pipex file1 cmd1 cmd2 file2\n");
