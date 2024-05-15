@@ -5,17 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 16:09:07 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/23 02:30:12 by ybouaoud         ###   ########.fr       */
+/*   Created: 2024/05/15 11:50:09 by ybouaoud          #+#    #+#             */
+/*   Updated: 2024/05/15 17:30:28 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_error(void)
+void	ft_error()
 {
-	perror("Error");
-	exit(EXIT_FAILURE);
+	write(2, "Error!\n", ft_strlen("Error!\n"));
+	ft_printf("usage : ./pipex file1 cmd1 cmd2 file2\n");
+	exit(1);
 }
 
 void	ft_free(char **str)
@@ -29,6 +30,21 @@ void	ft_free(char **str)
 		i++;
 	}
 	free(str);
+}
+
+void	give_value(t_pipe **op, char **argv, char **envp)
+{
+	(*op) = malloc(sizeof(t_pipe));
+	if (!op)
+		exit(1);
+	(*op)->file1 = argv[1];
+	(*op)->file2 = argv[4];
+	(*op)->envr = envp;
+	(*op)->argv = argv;
+	(*op)->cmd1 = ft_split(argv[2], ' ');
+	(*op)->cmd2 = ft_split(argv[3], ' ');
+	(*op)->path = get_path(envp, (*op)->cmd1[0]);
+	(*op)->path2 = get_path(envp, (*op)->cmd2[0]);
 }
 
 char	*get_path(char **envp, char *cmd)
@@ -60,23 +76,11 @@ char	*get_path(char **envp, char *cmd)
 	return (NULL);
 }
 
-void	execute_cmd(char *argv, char **envp)
+void	ft_free_all(t_pipe *op)
 {
-	char	**cmd;
-	char	*path;
-	int		i;
-
-	i = 0;
-	cmd = ft_split(argv, ' ');
-	path = get_path(envp, cmd[0]);
-	if (!path)
-	{
-		ft_free(cmd);
-		ft_error();
-	}
-	if (execve(path, cmd, envp) == -1)
-	{
-		ft_free(cmd);
-		ft_error();
-	}
+	ft_free(op->cmd1);
+	ft_free(op->cmd2);
+	free(op->path);
+	free(op->path2);
+	free(op);
 }

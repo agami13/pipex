@@ -25,7 +25,7 @@ BONUS_OBJS		= $(BONUS_SRC:.c=.o)
 
 CC				= cc
 RM				= rm -f
-CFLAGS			= -fPIE -Wall -Wextra -Werror 
+CFLAGS			= -Wall -Wextra -Werror
 AR				= ar
 ARF				= -rc
 

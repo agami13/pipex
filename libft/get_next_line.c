@@ -6,7 +6,7 @@
 /*   By: ybouaoud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 09:20:31 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/01/02 15:44:54 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2023/12/06 18:33:10 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	*read_file(int fd, char *cup)
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes == -1)
 		{
-			free(cup);
 			free(buffer);
 			return (NULL);
 		}
